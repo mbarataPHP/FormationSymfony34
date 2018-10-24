@@ -1,0 +1,5 @@
+- name: Copy across service
+  template:
+    src: "service.sh"
+    dest: "/usr/local/bin/service.sh"
+    mode: 0777

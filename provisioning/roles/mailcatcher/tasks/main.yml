@@ -1,0 +1,12 @@
+- name: GEM | install mailcatcher
+  gem:
+    name: mailcatcher
+    version: 0.6.5
+    state: present
+
+
+- name: Copy across mailcatcher.sh
+  template:
+    src: "mailcatcher.sh"
+    dest: "/usr/local/bin/mailcatcher.sh"
+    mode: 0777

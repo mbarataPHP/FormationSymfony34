@@ -1,0 +1,21 @@
+
+- name: Download Composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /usr/local/bin/installer
+    mode: 0777
+
+- name: php installer
+  shell: >
+    php /usr/local/bin/installer
+
+- name: Copy composer.phar
+  copy:
+    src: composer.phar
+    dest: /usr/local/bin/composer
+    mode: 0777
+
+- name: Removing installer
+  file:
+    path: /usr/local/bin/installer
+    state: absent

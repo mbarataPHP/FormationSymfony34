@@ -1,0 +1,43 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+  vars:
+    lsb_release: stretch
+    composer_path: /usr/local/bin/
+    mysql_user: root
+    mysql_old_root_password: productionpw
+    mysql_root_password: docker
+    phpmyadminVersion: '4.8.3'
+    listAlias:
+      - { name: 'start-service', path: 'sh /usr/local/bin/service.sh' }
+      - { name: 'phpunit', path: 'php /usr/local/bin/phpunit.phar' }
+      - { name: 'composer', path: '/usr/local/bin/composer'}
+      - { name: 'start-mail', path: 'sh /usr/local/bin/mailcatcher.sh'}
+  roles:
+    - curl
+    - apt-transport-https
+    - lsb-release
+    - ca-certificates
+    - ufw
+    - sudo
+    - build-essential
+    - git
+    - unzip
+    - mysql
+    - make
+    - ruby
+    - libsqlite3
+    - mailcatcher
+    - php
+    - phpmyadmin
+    - apache2
+    - phpunit
+    - composer
+    - node
+    - yarn
+    - service
+    - alias

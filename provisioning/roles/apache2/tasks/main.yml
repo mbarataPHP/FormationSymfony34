@@ -1,0 +1,14 @@
+- name: Copy 000-default.conf.j2
+  template:
+    src: "000-default.conf.j2"
+    dest: "/etc/apache2/sites-available/000-default.conf"
+
+- name: Copy apache2.conf
+  template:
+    src: "apache2.conf"
+    dest: "/etc/apache2/apache2.conf"
+
+- name: Copy ports.conf
+  template:
+    src: "ports.conf"
+    dest: "/etc/apache2/ports.conf"

@@ -1,0 +1,19 @@
+- name: create alias vagrant
+  template:
+    src: alias.sh.j2
+    dest: /usr/local/bin/alias.sh
+    mode: 0777
+  when: environnement == "vagrant"
+
+
+- name: create alias docker
+  template:
+    src: alias-docker.sh.j2
+    dest: /usr/local/bin/alias.sh
+    mode: 0777
+  when: environnement == "docker"
+
+
+- name: active alias
+  shell: >
+    sh /usr/local/bin/alias.sh

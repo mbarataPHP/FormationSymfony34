@@ -1,0 +1,4 @@
+{% for itemAlias in listAlias %}
+  sudo bash -c "echo alias {{ itemAlias.name }}=\'{{ itemAlias.path }}\'" >> /home/vagrant/.bashrc
+{% endfor %}
+. ~/.bashrc

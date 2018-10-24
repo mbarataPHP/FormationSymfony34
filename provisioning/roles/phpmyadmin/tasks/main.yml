@@ -1,0 +1,17 @@
+
+# https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-english.zip
+
+- name: Creates directory phpMyAdmin
+  file: path=/var/phpmyadmin state=directory
+
+- name: Download phpMyAdmin
+  get_url:
+    url: "https://files.phpmyadmin.net/phpMyAdmin/{{ phpmyadminVersion }}/phpMyAdmin-{{ phpmyadminVersion }}-english.zip"
+    dest: /var/phpmyadmin
+    mode: 0777
+
+- name: Unarchive phpmyadmin
+  unarchive:
+    src: "/var/phpmyadmin/phpMyAdmin-{{ phpmyadminVersion }}-english.zip"
+    dest: /var/phpmyadmin/
+    remote_src: yes

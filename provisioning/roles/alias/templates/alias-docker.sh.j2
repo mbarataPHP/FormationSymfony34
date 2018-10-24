@@ -1,0 +1,3 @@
+{% for itemAlias in listAlias %}
+  echo "alias {{ itemAlias.name }}='{{ itemAlias.path }}'" >> ~/.bashrc
+{% endfor %}
