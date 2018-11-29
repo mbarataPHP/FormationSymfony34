@@ -19,6 +19,8 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
-        return $this->render('default/index.html.twig', array('name'=>'Célestin'));
+        return $this->render('default/index.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
     }
 }
