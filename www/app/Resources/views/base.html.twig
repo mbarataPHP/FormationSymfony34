@@ -22,9 +22,25 @@
 
                         <a class="navbar-brand" href="{{ path('homepage') }}">Home</a>
                     </div>
+                    {% if is_granted('ROLE_USER') %}
+                        <form class="navbar-form navbar-left">
+                            <a href="{{ path('newspaper_add') }}" class="btn btn-success">Ajouter</a>
+                        </form>
+                    {% endif %}
 
 
-                </div><!-- /.container-fluid -->
+                    {% if is_granted('ROLE_USER') %}
+                        <form class="navbar-form navbar-right">
+                            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger">Se déconnecter</a>
+                        </form>
+                    {% else %}
+
+                        <form class="navbar-form navbar-right">
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-success">Se connecter</a>
+                        </form>
+                    {% endif %}
+
+                </div>
             </nav>
             {% block body %}{% endblock %}
         </div>

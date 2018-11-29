@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ newspaper.titre }}{% endblock %}
+
+{% block body %}
+    {{ newspaper.createdAt|date('d-m-Y H:i:s') }}
+    <div class="jumbotron">
+        <h1>{{ newspaper.titre }}</h1>
+
+
+    </div>
+
+{% endblock %}

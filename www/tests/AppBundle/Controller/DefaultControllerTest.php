@@ -2,13 +2,13 @@
 
 namespace Tests\AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use AppBundle\Parent\TestParent;
 
 /**
  * Class DefaultControllerTest
  * @package Tests\AppBundle\Controller
  */
-class DefaultControllerTest extends WebTestCase
+class DefaultControllerTest extends TestParent
 {
     /**
      * Ce test permet de tester si la route "homepage" fonctionne toujours

@@ -4,5 +4,22 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <span>hello <b>{{ name }}</b></span>
+    <div class="row">
+
+        {% for newspaper in newspapers %}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ newspaper.titre }}</div>
+                    <div class="panel-body">
+                        {% if is_granted('ROLE_USER') %}
+
+                                <a href="{{ path('newspaper_update', {id:newspaper.id}) }}" class="btn btn-success">Modifier</a>
+
+                        {% endif %}
+                        <a href="{{ path('newspaper_show', {id:newspaper.id}) }}" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
