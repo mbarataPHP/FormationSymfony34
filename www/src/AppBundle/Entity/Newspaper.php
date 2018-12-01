@@ -31,8 +31,8 @@ class Newspaper
      * @Assert\Length(
      *      min = 3,
      *      max = 100,
-     *      minMessage = "Le titre doit comporter au moins {{ limite }} caractères.",
-     *      maxMessage = "Le titre ne peut pas contenir plus de {{ limite }} caractères."
+     *      minMessage = "Le titre doit comporter au moins {{ limit }} caractères.",
+     *      maxMessage = "Le titre ne peut pas contenir plus de {{ limit }} caractères."
      * )
      * @ORM\Column(name="titre", type="string", length=100)
      */
@@ -44,6 +44,28 @@ class Newspaper
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="newspapers")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @var User
+     */
+    private $user;
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(?User $user): void
+    {
+        $this->user = $user;
+    }
 
 
     /**

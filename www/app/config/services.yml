@@ -29,6 +29,13 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    app.event.newspaper.subscriber:
+        class: AppBundle\EventListener\NewspaperSubscriber
+        arguments: ["@security.token_storage"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:

@@ -48,6 +48,7 @@ class UserFixtures extends Fixture
             $user->setRoles($data[self::ROLES]);
             $user->setEnabled(true);
 
+            $this->addReference($data[self::USERNAME], $user);
             $manager->persist($user);
         }
 

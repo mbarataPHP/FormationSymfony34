@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -21,6 +22,35 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Newspaper", mappedBy="user")
+     * @var Newspaper[]
+     */
+    private $newspapers;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->newspapers = new ArrayCollection();
+    }
+
+    /**
+     * @return Newspaper[]
+     */
+    public function getNewspapers(): array
+    {
+        return $this->newspapers;
+    }
+
+    /**
+     * @param Newspaper[] $newspapers
+     */
+    public function setNewspapers(array $newspapers): void
+    {
+        $this->newspapers = $newspapers;
+    }
 
 
     /**
