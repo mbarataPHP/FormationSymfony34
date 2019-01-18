@@ -21,7 +21,6 @@ class DefaultController extends Controller
     {
         $newspapers = $this->getDoctrine()->getRepository(Newspaper::class)->getLastNewspapers();
 
-
         return $this->render('default/index.html.twig', array('newspapers'=>$newspapers));
     }
 }
