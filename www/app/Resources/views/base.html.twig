@@ -14,31 +14,32 @@
         <script src="{{ asset('public/js/bootstrap.min.js') }}" ></script>
     </head>
     <body>
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
-        	<a class="navbar-brand" href="{{ path('homepage') }}">Home</a>
-                    </div>
-                    {% if is_granted('ROLE_USER') %}
-                        <form class="navbar-form navbar-left">
-                            <a href="{{ path('newspaper_add') }}" class="btn btn-success">Ajouter</a>
-                        </form>
-                    {% endif %}
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('homepage') }}">Home</a>
 
+            </div>
+            {% if is_granted('ROLE_USER') %}
+                <form class="navbar-form navbar-left">
+                    <a href="{{ path('newspaper_add') }}" class="btn btn-success">Ajouter</a>
+                </form>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                <form class="navbar-form navbar-right">
+                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger">Se déconnecter</a>
+                </form>
+            {% else %}
 
-                    {% if is_granted('ROLE_USER') %}
-                        <form class="navbar-form navbar-right">
-                            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger">Se déconnecter</a>
-                        </form>
-                    {% else %}
-
-                        <form class="navbar-form navbar-right">
-                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-success">Se connecter</a>
-                        </form>
-                    {% endif %}
-
-                </div>
-            </nav>
-            {% block body %}{% endblock %}
+                <form class="navbar-form navbar-right">
+                    <a href="{{ path('fos_user_security_login') }}" class="btn btn-success">Se connecter</a>
+                </form>
+            {% endif %}
         </div>
-        {% block javascripts %}{% endblock %}
+    </nav>
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}{% endblock %}
     </body>
 </html>
