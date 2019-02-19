@@ -39,7 +39,9 @@ class NewspaperController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('newspaper/form.html.twig', array('form'=>$form->createView(), 'title'=>'Ajouter un journal'));
+        return $this->render('newspaper/form.html.twig',
+            array('form'=>$form->createView(), 'title'=>'Ajouter un journal')
+        );
 
     }
 

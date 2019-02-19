@@ -19,8 +19,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $newspapers = $this->getDoctrine()->getRepository(Newspaper::class)->getLastNewspapers();
+        $newspapers = $this->getDoctrine()
+            ->getRepository(Newspaper::class)
+            ->getLastNewspapers();
 
         return $this->render('default/index.html.twig', array('newspapers'=>$newspapers));
     }
 }
+
+
